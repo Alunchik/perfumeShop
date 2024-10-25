@@ -1,0 +1,449 @@
+{
+	"info": {
+		"_postman_id": "7d6033a2-59ba-4dc5-a56b-ae985c1d687a",
+		"name": "Virtualization_4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19457356"
+	},
+	"item": [
+		{
+			"name": "AddBrand",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Versace\",\r\n    \"country\": \"Italy\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8083/brand/",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"brand",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddBrand Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"By Kilian\",\r\n    \"country\": \"France\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8083/brand/",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"brand",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddBrand Copy 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Alla\",\r\n    \"country\": \"Russia\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8083/brand/",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"brand",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Brands",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8083/brand/",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"brand",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request Copy",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8083/brand/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"brand",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddGroup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n        {\r\n            \"name\": \"Woody\",\r\n            \"description\": \"Wood ingredients add richness, warmth, elegance and a depth to a fragrance and are key in perfume making. In the heart you would typically find crisp, dry woody notes and dominant resin or wood are found in the base notes.\"\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8083/group",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"group"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddGroup Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n        {\r\n            \"name\": \"Cirtus\"\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8083/group",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"group"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddGroup Copy 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n        {\r\n            \"name\": \"Floral\",\r\n            \"description\": \"It smells like flowers\"\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8083/group",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"group"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddGroup Copy 3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n        {\r\n            \"name\": \"Oriental\",\r\n            \"description\": \"Really heavy scents\"\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8083/group",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"group"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddGroup Copy 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n        {\r\n            \"name\": \"Dusty\",\r\n            \"description\": \"???\" \r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8083/group",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"group"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Groups",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8083/group",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"group"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8083/group/5",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"group",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddPerfume Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Versense\",\r\n    \"brandId\": 1,\r\n    \"perfumeGroupIds\":[1]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8083/perfume",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"perfume"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddPerfume Copy 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Angel's share\",\r\n    \"brandId\": 2,\r\n    \"perfumeGroupIds\":[1, 4]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8083/perfume",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"perfume"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddPerfume Copy 3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"fictious name\",\r\n    \"brandId\": 1,\r\n    \"perfumeGroupIds\":[1,2,3,4]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8083/perfume",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"perfume"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddPerfume 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Rose Oud\",\r\n    \"brandId\": 2,\r\n    \"perfumeGroupIds\":[1, 3]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8083/perfume",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"perfume"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8083/perfume",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8083/perfume",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"perfume"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request Copy 2",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8083/perfume/5",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"perfume",
+						"5"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
