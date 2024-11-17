@@ -1,0 +1,134 @@
+version: "3.8"
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+      - 12345:12345
+    depends_on:
+      - db
+    command:
+      -Dcom.sun.management.jmxremote
+      -Dcom.sun.management.jmxremote.port=12345
+      -Dcom.sun.management.jmxremote.rmi.port=12345
+      -Dcom.sun.management.jmxremote.authenticate=false
+      -Dcom.sun.management.jmxremote.ssl=false
+      -Djava.rmi.server.hostname=backend
+
+    environment:
+      DBNAME: virtualization_4
+      DBPORT: 5432
+      DBUSER: postgres
+      DBPASS: admin
+      DBHOST: db
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: virtualization_4
+    ports:
+      - "5432:5432"
+
+  db_zabbix:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: zabbix
+
+  adminer:
+    image: adminer
+    ports:
+      - "8081:8080"
+    depends_on:
+      - db
+
+  graylog:
+    image: graylog/graylog:6.0
+    ports:
+      - 9000:9000
+      - 1514:1514
+      - 1514:1514/udp
+      - 12201:12201
+      - 12201:12201/udp
+    environment:
+      GRAYLOG_PASSWORD_SECRET: vTz6rg7i-eruq1NnaUt74XjXdM7i16mN80sFlFNHFLvW15qcyFdHkhTIt6IUGcTRYkptNYeshLY31fKT7t8rJVsREGQbBz1m
+      GRAYLOG_ELASTICSEARCH_HOSTS: "http://elasticsearch:9200"
+      GRAYLOG_ROOT_PASSWORD_SHA2: a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3
+    entrypoint: /usr/bin/tini -- wait-for-it elasticsearch:9200 --  /docker-entrypoint.sh
+    depends_on:
+      - mongo
+      - elasticsearch
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+
+  elasticsearch:
+    image: elasticsearch:7.17.24
+    environment:
+      - "discovery.type=single-node"
+      - "xpack.security.enabled=false"
+    ports:
+      - "9200:9200"
+
+  zabbix_frontend:
+    image: zabbix/zabbix-web-apache-pgsql:latest
+    ports:
+      - "8082:8080"
+    environment:
+      DB_SERVER_HOST: db_zabbix
+      ZBX_SERVER_HOST: zabbix_backend
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    depends_on:
+      - db_zabbix
+      - zabbix_backend
+
+  zabbix_backend:
+    image: zabbix/zabbix-server-pgsql:latest
+    environment:
+      DB_SERVER_HOST: db_zabbix
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      ZBX_JAVAGATEWAY: zabbix_jgw
+      ZBX_JAVAGATEWAYPORT: 10052
+      ZBX_STARTPOLLERS: 5
+      ZBX_JAVAGATEWAY_ENABLE: "true"
+    ports:
+      - "10050:10050"
+    depends_on:
+      - db_zabbix
+
+  zabbix_jgw:
+    image: zabbix/zabbix-java-gateway:latest
+    depends_on:
+      - zabbix_backend
+    ports:
+      - "10052:10052"
+    links:
+      - backend
+
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus:/etc/prometheus
+
+  prometheus_pg_exporter:
+    image: quay.io/prometheuscommunity/postgres-exporter
+    environment:
+      DATA_SOURCE_URI: db:5432/postgres
+      DATA_SOURCE_USER: postgres
+      DATA_SOURCE_PASS: postgres
+
+  grafana:
+    image: grafana/grafana-oss:latest
+    ports:
+      - "3000:3000"
